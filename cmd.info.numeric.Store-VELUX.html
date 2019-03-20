@@ -1,60 +1,61 @@
-<div style="padding:0;min-width:98px;min-height:90px;" class="cmd tooltips cmd-widget cursor container-fluid #history# " data-type="info" data-subtype="numeric" data-cmd_id="#id#" data-cmd_uid="#uid#" data-eqLogic_id="#eqLogic_id#" data-eqLogic_id="#eqLogic_id#" title="#collectDate#">
+<div style="width:98px; min-height:80px;" class="cmd #history# tooltips cmd-widget" data-type="info" data-subtype="numeric" data-cmd_id="#id#" data-cmd_uid="#uid#" data-version="#version#" title="#collectDate#">
  	<!-- Info Widget
 		Basé sur les widget de 	: jayce
-		Mise à jour				: JAG 20190317 : Création
+		Mise à jour				: JAG 20190320 : Correction Bug non actualisation des données
 	-->
-	<center>
 	<div class="row">
+      	<center>
 		<div class="cmdName" id="cmdName#id#" style="font-weight: bold;font-size : 10px; #hideCmdName#;">#name_display# </div>
+        <div class='label label-info' style="font-size: 11px;">#state#</div><br>
 		<div style="font-size: 2.5em;margin-top:5px;" class="iconCmd"></div>
       	<!-- Historique -->
       		<div style="#displayHistory# font-size : 10px;margin-top:0px;">
       			<span title="Min" class="tooltips">#minHistoryValue##unite#</span>|<span title="Max" class="tooltips">#maxHistoryValue##unite#</span> <i class="#tendance#"></i>
       		</div>
+      </center>
 	</div>
-	</center>
-   	<script>
-		// Options de personnalisation avec valeur par defaut
-          // Paramètre "sizehw" : à déclarer en pixels - 80 maxi
-              	var srcImgHeight 	= (is_numeric('#sizeh#')) 	? parseFloat('#sizeh#') 	: 90;
-              	var srcImgWidth		= (is_numeric('#sizew#')) 	? parseFloat('#sizew#') 	: 90;
-        // Paramétrage des images
-              	var srcImgURL 		= 'plugins/widget/core/template/dashboard/cmd.info.numeric.Store-VELUX/';
-      			var srcImglogo		= ('#logo#'!='#'+'logo#') ? "#logo#" : "Store-";
-      // Update
-			var iconUpdate = function (state){
-                $('.cmd[data-cmd_uid=#uid#] .iconCmd').empty();
-                  if (state == 0 ) {
-                    $('.cmd[data-cmd_uid=#uid#] .iconCmd').html('<img src="'+srcImgURL + srcImglogo+ '0.png" style="height:' + srcImgHeight +'px;width:' + srcImgWidth +'px;">');
-                  } else if (state > 0  && state <= 35 ) {
-						$('.cmd[data-cmd_uid=#uid#] .iconCmd').html('<img src="'+srcImgURL + srcImglogo+ '10.png" style="height:' + srcImgHeight +'px;width:' + srcImgWidth +'px;">');
-                  } else if (state > 35 && state <= 45) {
-                    	$('.cmd[data-cmd_uid=#uid#] .iconCmd').html('<img src="'+srcImgURL + srcImglogo+ '20.png" style="height:' + srcImgHeight +'px;width:' + srcImgWidth +'px;">');
-                  } else if (state > 45 && state <= 55) {
-                    	$('.cmd[data-cmd_uid=#uid#] .iconCmd').html('<img src="'+srcImgURL + srcImglogo+ '30.png" style="height:' + srcImgHeight +'px;width:' + srcImgWidth +'px;">');
-                  } else if (state > 55 && state <= 63) {
-                    	$('.cmd[data-cmd_uid=#uid#] .iconCmd').html('<img src="'+srcImgURL + srcImglogo+ '40.png" style="height:' + srcImgHeight +'px;width:' + srcImgWidth +'px;">');
-                  } else if (state > 63 && state <= 73 ) {
-                    	$('.cmd[data-cmd_uid=#uid#] .iconCmd').html('<img src="'+srcImgURL + srcImglogo+ '50.png" style="height:' + srcImgHeight +'px;width:' + srcImgWidth +'px;">');
-                  } else if (state > 73 && state <= 84) {
-                    	$('.cmd[data-cmd_uid=#uid#] .iconCmd').html('<img src="'+srcImgURL + srcImglogo+ '60.png" style="height:' + srcImgHeight +'px;width:' + srcImgWidth +'px;">');
-                  } else if (state > 84 && state <= 92) {
-                    	$('.cmd[data-cmd_uid=#uid#] .iconCmd').html('<img src="'+srcImgURL + srcImglogo+ '70.png" style="height:' + srcImgHeight +'px;width:' + srcImgWidth +'px;">');
-                  } else if (state > 92 && state <= 95) {
-                    	$('.cmd[data-cmd_uid=#uid#] .iconCmd').html('<img src="'+srcImgURL + srcImglogo+ '80.png" style="height:' + srcImgHeight +'px;width:' + srcImgWidth +'px;">');
-                  } else if (state > 95 && state <= 100) {
-                    	$('.cmd[data-cmd_uid=#uid#] .iconCmd').html('<img src="'+srcImgURL + srcImglogo+ '99.png" style="height:' + srcImgHeight +'px;width:' + srcImgWidth +'px;">');
-                  } else {
-                    	$('.cmd[data-cmd_uid=#uid#] .iconCmd').html('<img src="'+srcImgURL + srcImglogo+ '0.png" style="height:' + srcImgHeight +'px;width:' + srcImgWidth +'px;">');
-                  }
-              	// Update Value or img
-					$('.cmd[data-cmd_uid=#uid#] .state').text(state);
-			};
-	jeedom.cmd.update['#id#'] = function(_options){
-		$('.cmd[data-cmd_uid=#uid#]').attr('title','Valeur du '+_options.valueDate+', collectée le '+_options.collectDate)
-		iconUpdate(_options.display_value);
-	}
-	jeedom.cmd.update['#id#']({display_value:'#state#',valueDate:'#valueDate#',collectDate:'#collectDate#',alertLevel:'#alertLevel#'});
+	<script>
+		jeedom.cmd.update['#id#'] = function(_options){
+			// Options de personnalisation avec valeur par defaut
+				// Paramètre "sizehw" : à déclarer en pixels - 80 maxi
+              		var srcImgHeight 	= (is_numeric('#sizeh#')) 	? parseFloat('#sizeh#') 	: 90;
+              		var srcImgWidth		= (is_numeric('#sizew#')) 	? parseFloat('#sizew#') 	: 90;
+        		// Paramétrage des images
+              		var srcImgURL 		= 'plugins/widget/core/template/dashboard/cmd.info.numeric.Store-VELUX/';
+      				var srcImglogo		= ('#logo#'!='#'+'logo#') ? "#logo#" : "Store-";
+          		// Variable Image
+          			var srcPictureID; 
+          	// Update
+    
+			var State = parseFloat(_options.display_value);	
+                    if (State == 0) {
+                        srcPictureID = "0";
+                    } else if (State > 0 && State <= 35) {
+                        srcPictureID = "10";
+                    } else if (State > 35 && State <= 45) {
+                        srcPictureID = "20";
+                    } else if (State > 45 && State <= 55) {
+                        srcPictureID = "30";
+                    } else if (State > 55 && State <= 63) {
+                        srcPictureID = "40";
+                    } else if (State > 63 && State <= 73) {
+                        srcPictureID = "50";
+                    } else if (State > 73 && State <= 84) {
+                        srcPictureID = "60";
+                    } else if (State > 84 && State <= 92) {
+                        srcPictureID = "70";
+                    } else if (State > 92 && State <= 95) {
+                        srcPictureID = "80";
+                    } else if (State > 95 && State <= 100) {
+                        srcPictureID = "99";
+                    } else {
+                        srcPictureID = "0";
+                    }          
+			// Update Value or img
+            	    $('.cmd[data-cmd_uid=#uid#] .iconCmd').html('<img src="'+srcImgURL + srcImglogo+ +srcPictureID+ '.png" style="height:' + srcImgHeight +'px;width:' + srcImgWidth +'px;">');
+            	    $('.cmd[data-cmd_uid=#uid#] .label-info').html(State+'#unite#');
+		     		$('.cmd[data-cmd_id=#id#]').attr('title','Valeur du '+_options.valueDate+', collectée le '+_options.collectDate);
+		}
+		jeedom.cmd.update['#id#']({display_value:'#state#',valueDate:'#valueDate#',collectDate:'#collectDate#',alertLevel:'#alertLevel#'});
 	</script>
-
 </div>
