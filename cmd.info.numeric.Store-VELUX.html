@@ -1,7 +1,7 @@
-<div style="width:98px; min-height:80px;" class="cmd #history# tooltips cmd-widget" data-type="info" data-subtype="numeric" data-cmd_id="#id#" data-cmd_uid="#uid#" data-version="#version#" title="#collectDate#">
+<div style="min-width:98px; min-height:80px;" class="cmd #history# tooltips cmd-widget" data-type="info" data-subtype="numeric" data-cmd_id="#id#" data-cmd_uid="#uid#" data-version="#version#" title="#collectDate#">
     <!-- Info Widget
         Basé sur les widget de 	: jayce
-        Mise à jour				: JAG 20190609 : Correction Bug lien image
+        Mise à jour				: JAG 20190720 : Correction bug largeur quand l'image est trop grande
 	-->
     <div class="title #hide_name#">
         <div class="cmdName" style="#hideCmdName#">#name_display#</div>
@@ -43,7 +43,9 @@
                 var State = parseFloat(_options.display_value);
                 if (State == 0) {
                     srcPictureID = "0";
-                } else if (State > 0 && State <= 35) {
+                } else if (State > 0 && State <= 17) {
+                    srcPictureID = "1";
+                } else if (State > 17 && State <= 35) {
                     srcPictureID = "10";
                 } else if (State > 35 && State <= 45) {
                     srcPictureID = "20";
