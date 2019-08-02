@@ -12,8 +12,8 @@
     <div style="font-weight: bold;font-size : 10px;">
         <span class="timeCmd#id#" ></span>
     </div>
-    <div class="value">
-        <span class="value#id# timeCmd label label-default value"></span>
+    <div class="value ">
+        <span class="value#id# timeCmd label label-default value valuevisible"></span>
     </div>
     <!-- Historique -->
         <div class="cmdStats #hide_history#" style="#displayHistory# font-size : 10px;margin-top:0px;">
@@ -22,6 +22,8 @@
 	<script>
 		jeedom.cmd.update['#id#'] = function(_options){
 			// Options de personnalisation avec valeur par defaut
+                // Variable masque pour div historique ou maxmin
+                    var srcvalue        = ('#masque_valeur#'!='#'+'masque_valeur#') ? "#masque_valeur#": "";
 				// Paramètre "sizehw" : à déclarer en pixels - 80 maxi
                     var srcImgHeight    = (is_numeric('#sizeh#')) 	? parseFloat('#sizeh#') 	: 90;
                     var srcImgWidth     = (is_numeric('#sizew#')) 	? parseFloat('#sizew#') 	: 90;
@@ -99,6 +101,12 @@
                     var srctime     = "à "+srcdate.getHours()+":"+(srcdate.getMinutes()<10?'0':'')+srcdate.getMinutes()+":"+(srcdate.getSeconds()<10?'0':'')+srcdate.getSeconds()+"";
                     $('.cmd[data-cmd_id=#uid#] .timeCmd#id#').empty().html(srctime);
                 };
+            //Masque des données
+                if (srcvalue =="") {
+                    $("span.valuevisible").css("display","visible");
+                }else{
+                    $("span.valuevisible").css("display","none");
+                }
           }
       jeedom.cmd.update['#id#']({display_value:'#state#',valueDate:'#valueDate#',collectDate:'#collectDate#',alertLevel:'#alertLevel#'});
     </script>
