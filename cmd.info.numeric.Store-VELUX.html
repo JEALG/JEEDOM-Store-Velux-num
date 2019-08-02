@@ -1,7 +1,7 @@
 <div style="min-width:98px; min-height:80px;" class="cmd #history# tooltips cmd-widget" data-type="info" data-subtype="numeric" data-cmd_id="#id#" data-cmd_uid="#uid#" data-version="#version#" title="#collectDate#">
     <!-- Info Widget
         Basé sur les widget de 	: jayce
-        Mise à jour				: JAG 20190722 : Ajout paramétrage des niveaux
+        Mise à jour				: JAG 20190802 : Ajout paramétrage pour masquer la valeur
 	-->
     <div class="title #hide_name#">
         <div class="cmdName" style="#hideCmdName#">#name_display#</div>
@@ -23,7 +23,7 @@
 		jeedom.cmd.update['#id#'] = function(_options){
 			// Options de personnalisation avec valeur par defaut
                 // Variable masque pour div historique ou maxmin
-                    var srcvalue        = ('#masque_valeur#'!='#'+'masque_valeur#') ? "#masque_valeur#": "";
+                    var srcvalue        = ('#masque_valeur#'!='#'+'masque_valeur#') ? "#masque_valeur#": "NO";
 				// Paramètre "sizehw" : à déclarer en pixels - 80 maxi
                     var srcImgHeight    = (is_numeric('#sizeh#')) 	? parseFloat('#sizeh#') 	: 90;
                     var srcImgWidth     = (is_numeric('#sizew#')) 	? parseFloat('#sizew#') 	: 90;
@@ -102,10 +102,10 @@
                     $('.cmd[data-cmd_id=#uid#] .timeCmd#id#').empty().html(srctime);
                 };
             //Masque des données
-                if (srcvalue =="") {
+                if (srcvalue =="NO") {
                     $("span.valuevisible").css("display","visible");
-                }else{
-                    $("span.valuevisible").css("display","none");
+                }else if (srcvalue =="YES") {
+                  	$("span.valuevisible").css("display","none");
                 }
           }
       jeedom.cmd.update['#id#']({display_value:'#state#',valueDate:'#valueDate#',collectDate:'#collectDate#',alertLevel:'#alertLevel#'});
