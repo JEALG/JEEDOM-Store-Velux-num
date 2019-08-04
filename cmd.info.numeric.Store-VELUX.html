@@ -99,7 +99,7 @@
                 } else if (srcImglogoTime == "heure") {
                     var srcdate     = new Date(_options.valueDate);
                     var srctime     = "à "+srcdate.getHours()+":"+(srcdate.getMinutes()<10?'0':'')+srcdate.getMinutes()+":"+(srcdate.getSeconds()<10?'0':'')+srcdate.getSeconds()+"";
-                    $('.cmd[data-cmd_id=#uid#] .timeCmd#id#').empty().html(srctime);
+                    $('.cmd[data-cmd_id=#id#] .timeCmd#id#').empty().html(srctime);
                 };
             //Masque des données
                 if (srcvalue =="NO") {
