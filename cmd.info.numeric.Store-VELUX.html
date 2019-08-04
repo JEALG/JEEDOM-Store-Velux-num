@@ -12,8 +12,8 @@
     <div style="font-weight: bold;font-size : 10px;">
         <span class="timeCmd#id#" ></span>
     </div>
-    <div class="value ">
-        <span class="value#id# timeCmd label label-default value valuevisible"></span>
+    <div class="value">
+        <span class="value#id# timeCmd label label-default value"></span>
     </div>
     <!-- Historique -->
         <div class="cmdStats #hide_history#" style="#displayHistory# font-size : 10px;margin-top:0px;">
@@ -103,9 +103,9 @@
                 };
             //Masque des données
                 if (srcvalue =="NO") {
-                    $("span.valuevisible").css("display","visible");
+                    $("span.value#id#").css("display","visible");
                 }else if (srcvalue =="YES") {
-                  	$("span.valuevisible").css("display","none");
+                  	$("span.value#id#").css("display","none");
                 }
           }
       jeedom.cmd.update['#id#']({display_value:'#state#',valueDate:'#valueDate#',collectDate:'#collectDate#',alertLevel:'#alertLevel#'});
