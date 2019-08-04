@@ -95,7 +95,7 @@
                     var srcdate     = new Date(_options.valueDate);
                     var srcformat   = $.datepicker.formatDate('D dd/mm', srcdate);
                     var srctime     = "à "+srcdate.getHours()+":"+(srcdate.getMinutes()<10?'0':'')+srcdate.getMinutes();
-                    $('.cmd[data-cmd_uid=#id#] .timeCmd#id#').empty().html(srcformat+'<br>'+srctime);
+                    $('.cmd[data-cmd_id=#id#] .timeCmd#id#').empty().html(srcformat+'<br>'+srctime);
                 } else if (srcImglogoTime == "heure") {
                     var srcdate     = new Date(_options.valueDate);
                     var srctime     = "à "+srcdate.getHours()+":"+(srcdate.getMinutes()<10?'0':'')+srcdate.getMinutes()+":"+(srcdate.getSeconds()<10?'0':'')+srcdate.getSeconds()+"";
