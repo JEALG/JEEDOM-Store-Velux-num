@@ -1,7 +1,7 @@
 <div style="min-width:98px; min-height:80px;" class="cmd #history# tooltips cmd-widget" data-type="info" data-subtype="numeric" data-cmd_id="#id#" data-cmd_uid="#uid#" data-version="#version#" title="#collectDate#">
     <!-- Info Widget
         Basé sur les widget de 	: jayce
-        Mise à jour				: JAG 20190804 : Correction Bug masquage valeur + Affichage duree
+        Mise à jour				: JAG 20190907 : Normalisation nom images => Merci à mich0111
 	-->
     <div class="title #hide_name#">
         <div class="cmdName" style="#hideCmdName#">#name_display#</div>
@@ -45,10 +45,10 @@
         		// Paramétrage des images
                     var srcImgURL       = 'plugins/widget/core/template/dashboard/cmd.info.numeric.Store-VELUX/';
                 // Paramètrage du logo
-                    var srcImglogo      = ('#logo#'!='#'+'logo#') ? "#logo#" : "Store-";
+                    var srcImglogo      = ('#logo#'!='#'+'logo#') ? "#logo#" : "store_pos";
                     var srcImglogo_T    = ('#logo_type#'!='#'+'logo_type#') ? "#logo_type#" : "png";
             // Paramètrage du logo ERREUR
-                    var srcImglogoER    = ('#logo_error#'!='#'+'logo_error#') ? "#logo_error#" : "oups";
+                    var srcImglogoER    = ('#logo_error#'!='#'+'logo_error#') ? "#logo_error#" : "er_oups1";
                     var srcImglogoER_T  = ('#logo_error_type#'!='#'+'logo_error_type#') ? "#logo_error_type#" : "png";
             // Variable Image
                     var srcPictureID;
