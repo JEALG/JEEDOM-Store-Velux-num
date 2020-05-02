@@ -1,7 +1,8 @@
 <div style="min-width:98px; min-height:80px;" class="cmd #history# tooltips cmd-widget" data-type="info" data-subtype="numeric" data-cmd_id="#id#" data-cmd_uid="#uid#" data-version="#version#" title="#collectDate#">
     <!-- Info Widget
-        Basé sur les widget de 	: jayce
-        Mise à jour				: JAG 20190918 : Migration uniquement pour core V4
+        Basé sur les widget de 	    : jayce
+        Widget pour le Core         : V4
+        Mise à jour	                : JAG 20200502 => Ajout Version Core
 	-->
     <div class="title #hide_name#">
         <div class="cmdName" style="#hideCmdName#">#name_display#</div>
@@ -16,100 +17,106 @@
         <span class="value#id# timeCmd label label-default value"></span>
     </div>
     <!-- Historique -->
-        <div class="cmdStats #hide_history#" style="#displayHistory# font-size : 10px;margin-top:0px;">
-            <span title="Min" class="tooltips">#minHistoryValue# #unite#</span>|<span title="Max" class="tooltips">#maxHistoryValue# #unite#</span> <i class="#tendance#"></i>
-        </div>
-	<script>
-		jeedom.cmd.update['#id#'] = function(_options){
-			// Options de personnalisation avec valeur par defaut
-                // Variable masque pour div historique ou maxmin
-                    var srcvalue        = ('#masque_valeur#'!='#'+'masque_valeur#') ? "#masque_valeur#": "NO";
-				// Paramètre "sizehw" : à déclarer en pixels - 80 maxi
-                    var srcImgHeight    = (is_numeric('#sizeh#')) 	? parseFloat('#sizeh#') 	: 90;
-                    var srcImgWidth     = (is_numeric('#sizew#')) 	? parseFloat('#sizew#') 	: 90;
-                    var srcImgSize      = 'height='+srcImgHeight+'px width='+srcImgWidth+'px';
-                // Paramétrage Niveau
-                    var level_0 		= (is_numeric('#level_0#')) ? parseFloat('#level_0#') : 0;
-                    var level_1 		= (is_numeric('#level_1#')) ? parseFloat('#level_1#') : 17;	
-                    var level_2  		= (is_numeric('#level_2#')) ? parseFloat('#level_2#') : 35;
-                    var level_3         = (is_numeric('#level_3#')) ? parseFloat('#level_3#') : 45;
-                    var level_4 		= (is_numeric('#level_4#')) ? parseFloat('#level_4#') : 55;
-                    var level_5 		= (is_numeric('#level_5#')) ? parseFloat('#level_5#') : 63;
-                    var level_6  		= (is_numeric('#level_6#')) ? parseFloat('#level_6#') : 73;
-                    var level_7         = (is_numeric('#level_7#')) ? parseFloat('#level_7#') : 84;
-                    var level_8 		= (is_numeric('#level_8#')) ? parseFloat('#level_8#') : 92;
-                    var level_9 		= (is_numeric('#level_9#')) ? parseFloat('#level_9#') : 95;
-                    var level_10 		= (is_numeric('#level_10#')) ? parseFloat('#level_10#') : 100;
-        		// Affichage durée changement dernier etat
-                    var srcImglogoTime  = '#logoTime#';
-        		// Paramétrage des images
-                    var srcImgURL       = 'data/customTemplates/dashboard/cmd.action.other.Multi-action-Defaut/store/';
-                    var srcImgURL_ER    = 'data/customTemplates/dashboard/cmd.action.other.Multi-action-Defaut/error/';
-                // Paramètrage du logo
-                    var srcImglogo      = ('#logo#'!='#'+'logo#') ? "#logo#" : "st_volet_pos";
-                    var srcImglogo_T    = ('#logo_type#'!='#'+'logo_type#') ? "#logo_type#" : "png";
+    <div class="cmdStats #hide_history#" style="#displayHistory# font-size : 10px;margin-top:0px;">
+        <span title="Min" class="tooltips">#minHistoryValue# #unite#</span>|<span title="Max" class="tooltips">#maxHistoryValue# #unite#</span> <i class="#tendance#"></i>
+    </div>
+    <script>
+        jeedom.cmd.update['#id#'] = function(_options) {
+            // Options de personnalisation avec valeur par defaut
+            // Variable masque pour div historique ou maxmin
+            var srcvalue = ('#masque_valeur#' != '#' + 'masque_valeur#') ? "#masque_valeur#" : "NO";
+            // Paramètre "sizehw" : à déclarer en pixels - 80 maxi
+            var srcImgHeight = (is_numeric('#sizeh#')) ? parseFloat('#sizeh#') : 90;
+            var srcImgWidth = (is_numeric('#sizew#')) ? parseFloat('#sizew#') : 90;
+            var srcImgSize = 'height=' + srcImgHeight + 'px width=' + srcImgWidth + 'px';
+            // Paramétrage Niveau
+            var level_0 = (is_numeric('#level_0#')) ? parseFloat('#level_0#') : 0;
+            var level_1 = (is_numeric('#level_1#')) ? parseFloat('#level_1#') : 17;
+            var level_2 = (is_numeric('#level_2#')) ? parseFloat('#level_2#') : 35;
+            var level_3 = (is_numeric('#level_3#')) ? parseFloat('#level_3#') : 45;
+            var level_4 = (is_numeric('#level_4#')) ? parseFloat('#level_4#') : 55;
+            var level_5 = (is_numeric('#level_5#')) ? parseFloat('#level_5#') : 63;
+            var level_6 = (is_numeric('#level_6#')) ? parseFloat('#level_6#') : 73;
+            var level_7 = (is_numeric('#level_7#')) ? parseFloat('#level_7#') : 84;
+            var level_8 = (is_numeric('#level_8#')) ? parseFloat('#level_8#') : 92;
+            var level_9 = (is_numeric('#level_9#')) ? parseFloat('#level_9#') : 95;
+            var level_10 = (is_numeric('#level_10#')) ? parseFloat('#level_10#') : 100;
+            // Affichage durée changement dernier etat
+            var srcImglogoTime = '#logoTime#';
+            // Paramétrage des images
+            var srcImgURL = 'data/customTemplates/dashboard/cmd.action.other.Multi-action-Defaut/store/';
+            var srcImgURL_ER = 'data/customTemplates/dashboard/cmd.action.other.Multi-action-Defaut/error/';
+            // Paramètrage du logo
+            var srcImglogo = ('#logo#' != '#' + 'logo#') ? "#logo#" : "st_volet_pos";
+            var srcImglogo_T = ('#logo_type#' != '#' + 'logo_type#') ? "#logo_type#" : "png";
             // Paramètrage du logo ERREUR
-                    var srcImglogoER    = ('#logo_error#'!='#'+'logo_error#') ? "#logo_error#" : "er_oups1";
-                    var srcImglogoER_T  = ('#logo_error_type#'!='#'+'logo_error_type#') ? "#logo_error_type#" : "png";
+            var srcImglogoER = ('#logo_error#' != '#' + 'logo_error#') ? "#logo_error#" : "er_oups1";
+            var srcImglogoER_T = ('#logo_error_type#' != '#' + 'logo_error_type#') ? "#logo_error_type#" : "png";
             // Variable Image
-                    var srcPictureID;
-            
+            var srcPictureID;
+
             // Update
-                var State = parseFloat(_options.display_value);
-                if (State == level_0) {
-                    srcPictureID    = "0";
-                } else if (State > level_0 && State <= level_1) {
-                    srcPictureID    = "1";
-                } else if (State > level_1 && State <= level_2) {
-                    srcPictureID    = "10";
-                } else if (State > level_2 && State <= level_3) {
-                    srcPictureID    = "20";
-                } else if (State > level_3 && State <= level_4) {
-                    srcPictureID    = "30";
-                } else if (State > level_4 && State <= level_5) {
-                    srcPictureID    = "40";
-                } else if (State > level_5 && State <= level_6) {
-                    srcPictureID    = "50";
-                } else if (State > level_6 && State <= level_7) {
-                    srcPictureID    = "60";
-                } else if (State > level_7 && State <= level_8) {
-                    srcPictureID    = "70";
-                } else if (State > level_8 && State <= level_9) {
-                    srcPictureID    = "80";
-                } else if (State > level_9 && State <= level_10) {
-                    srcPictureID    = "99";
-                } else {
-                    srcPictureID    = "error";
-                    srcImgURL       = srcImgURL_ER;
-                }          
+            var State = parseFloat(_options.display_value);
+            if (State == level_0) {
+                srcPictureID = "0";
+            } else if (State > level_0 && State <= level_1) {
+                srcPictureID = "1";
+            } else if (State > level_1 && State <= level_2) {
+                srcPictureID = "10";
+            } else if (State > level_2 && State <= level_3) {
+                srcPictureID = "20";
+            } else if (State > level_3 && State <= level_4) {
+                srcPictureID = "30";
+            } else if (State > level_4 && State <= level_5) {
+                srcPictureID = "40";
+            } else if (State > level_5 && State <= level_6) {
+                srcPictureID = "50";
+            } else if (State > level_6 && State <= level_7) {
+                srcPictureID = "60";
+            } else if (State > level_7 && State <= level_8) {
+                srcPictureID = "70";
+            } else if (State > level_8 && State <= level_9) {
+                srcPictureID = "80";
+            } else if (State > level_9 && State <= level_10) {
+                srcPictureID = "99";
+            } else {
+                srcPictureID = "error";
+                srcImgURL = srcImgURL_ER;
+            }
             // Update IMG + gestion erreur
-                if (srcPictureID == "error"){
-                    $('.cmd[data-cmd_uid=#uid#] .iconCmd#id#').empty().append('<img src="'+srcImgURL +srcImglogoER +'.'+ srcImglogoER_T+'" '+srcImgSize+'>');
-                } else {
-                    $('.cmd[data-cmd_uid=#uid#] .iconCmd#id#').empty().append('<img src="'+srcImgURL +srcImglogo +srcPictureID +'.'+ srcImglogo_T+'" '+srcImgSize+'>');
-                }
-                $('.cmd[data-cmd_uid=#uid#] .value#id#').empty().append(_options.display_value+' '+'#unite#');
-          	
+            if (srcPictureID == "error") {
+                $('.cmd[data-cmd_uid=#uid#] .iconCmd#id#').empty().append('<img src="' + srcImgURL + srcImglogoER + '.' + srcImglogoER_T + '" ' + srcImgSize + '>');
+            } else {
+                $('.cmd[data-cmd_uid=#uid#] .iconCmd#id#').empty().append('<img src="' + srcImgURL + srcImglogo + srcPictureID + '.' + srcImglogo_T + '" ' + srcImgSize + '>');
+            }
+            $('.cmd[data-cmd_uid=#uid#] .value#id#').empty().append(_options.display_value + ' ' + '#unite#');
+
             // Derniere durée changement dernier etat //Merci @Salvialf pour le code
-                if (srcImglogoTime == "duree") {
-                    jeedom.cmd.displayDuration(_options.valueDate, $('.cmd[data-cmd_uid=#uid#] .timeCmd#id#'));
-                } else if (srcImglogoTime == "date") {
-                    var srcdate     = new Date(_options.valueDate);
-                    var srcformat   = $.datepicker.formatDate('D dd/mm', srcdate);
-                    var srctime     = "à "+srcdate.getHours()+":"+(srcdate.getMinutes()<10?'0':'')+srcdate.getMinutes();
-                    $('.cmd[data-cmd_id=#id#] .timeCmd#id#').empty().html(srcformat+' '+srctime);
-                } else if (srcImglogoTime == "heure") {
-                    var srcdate     = new Date(_options.valueDate);
-                    var srctime     = "à "+srcdate.getHours()+":"+(srcdate.getMinutes()<10?'0':'')+srcdate.getMinutes()+":"+(srcdate.getSeconds()<10?'0':'')+srcdate.getSeconds()+"";
-                    $('.cmd[data-cmd_id=#id#] .timeCmd#id#').empty().html(srctime);
-                };
+            if (srcImglogoTime == "duree" || srcImglogoTime == "durée") {
+                jeedom.cmd.displayDuration(_options.valueDate, $('.cmd[data-cmd_uid=#uid#] .timeCmd#id#'));
+            } else if (srcImglogoTime == "date") {
+                var srcdate = new Date(_options.valueDate);
+                var srcformat = $.datepicker.formatDate('D dd/mm', srcdate);
+                var srctime = "à " + srcdate.getHours() + ":" + (srcdate.getMinutes() < 10 ? '0' : '') + srcdate.getMinutes();
+                $('.cmd[data-cmd_id=#id#] .timeCmd#id#').empty().html(srcformat + ' ' + srctime);
+            } else if (srcImglogoTime == "heure") {
+                var srcdate = new Date(_options.valueDate);
+                var srctime = "à " + srcdate.getHours() + ":" + (srcdate.getMinutes() < 10 ? '0' : '') + srcdate.getMinutes() + ":" + (srcdate.getSeconds() < 10 ? '0' : '') + srcdate.getSeconds() + "";
+                $('.cmd[data-cmd_id=#id#] .timeCmd#id#').empty().html(srctime);
+            };
             //Masque des données
-                if (srcvalue =="NO") {
-                    $("span.value#id#").css("display","visible");
-                }else if (srcvalue =="YES") {
-                  	$("span.value#id#").css("display","none");
-                }
-          }
-      jeedom.cmd.update['#id#']({display_value:'#state#',valueDate:'#valueDate#',collectDate:'#collectDate#',alertLevel:'#alertLevel#'});
+            if (srcvalue == "NO") {
+                $("span.value#id#").css("display", "visible");
+            } else if (srcvalue == "YES") {
+                $("span.value#id#").css("display", "none");
+            }
+        }
+        jeedom.cmd.update['#id#']({
+            display_value: '#state#',
+            valueDate: '#valueDate#',
+            collectDate: '#collectDate#',
+            alertLevel: '#alertLevel#'
+        });
+
     </script>
 </div>
